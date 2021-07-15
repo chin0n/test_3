@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+body{
+      height: 100%;
+      margin: 0 auto;
+}
+body, .btn{
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 18px;
+}
+h3{
+  color: Coral;
+}
+footer{
+  margin-top: 60px;
+}
+.grid {
+   padding: 30px;
+   margin: 0 auto;
+   width: 300px;
+   height: 100vh;
+   background: #fff;
+   border: none;
+   /* border-radius: 10px; */
+   /* box-shadow: 5px 5px 5px #cbcbcb; */
+   background-color: SeaShell;
+}
+
+.grid h1 {
+   color: black;
+   font-size: 18px;
+   text-align: center;
+   margin-bottom: 50px;
+}
+
+#quiz {
+   text-align: center;
+}
+
+#question {
+   padding: 10px;
+   /* background: salmon;
+   border-radius: 15px; */
+   font-size: 22px;
+   color: Coral;
+}
+
+#progress {
+   font-size: 20px;
+   color: black;
+}
+
+.buttons {
+   padding: 0px 20px;
+   /* border: 2px solid #eed0dc;
+   border-radius: 20px; */
+}
+
+.btn {
+   /* margin: 10px 40px 20px 0; */
+   margin-top: 10px;
+   margin-bottom: 10px;
+   padding: 10px;
+   width: 250px;
+   font-size: 18px;
+   color: white;
+   background: rgba(255, 160, 122, 1.0);
+   border: none;
+   border-radius: 15px;
+   cursor: pointer;
+   transition: all .2s;
+}
+
+.btn:nth-child(2n) {
+   margin-right: 0;
+}
+
+.btn:hover {
+   background: rgba(255, 160, 122, 0.8);
+   color: #fff;
+}
+
+#score{
+  color: Tomato;
+}

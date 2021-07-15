@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="test5.css">
+    </head>
+    <body>
+        <div class="grid">
+           <h1>😋더더 정확해진 음식 심리테스트🍕</h1>
+           <div id="quiz">
+              <p id="question"></p>
+
+              <div class="buttons">
+                 <button class="btn"></button>
+                 <button class="btn"></button>
+              </div>
+
+              <footer>
+                 <p id="progress">진행 정보</p>
+              </footer>
+           </div>
+        </div>
+    </body>
+    <script>
+        // 문제 객체(생성자 함수)
+        function Question(text, choice, answer) {
+           this.text = text; // 질문 텍스트
+           this.choice = choice; // 선택할 답들(배열)
+           this.answer = answer; // 정답 정보
+        }
+
+        // 퀴즈 정보 객체
+        function Quiz(questions) {
+           this.typeA = 0; // 점수
+           this.typeB = 0; // 점수
+           this.questions = questions; // 문제
+           this.questionIndex = 0; // 문제 번호
+        }
+
+        var questions = [
+           new Question('다음 중 더 좋아하는 것은?', ['따뜻한 아메리카노', '아이스 아메리카노'], ['A','B']),
+           new Question('다음 중 더 좋아하는 것은?', ['뜨끈한 라면', '시원한 비빔면'], ['A','B']),
+           new Question('다음 중 더 좋아하는 것은?', ['얼큰한 매운탕', '얼음 동동 물회'], ['A','B']),
+
+        ];
+
+        // 퀴즈 객체 생성
+        var quiz = new Quiz(questions);
+
+        // 문제 출력 함수
+        function updateQuiz() {
+           var question = document.getElementById('question');
+           var idx = quiz.questionIndex + 1;
+           var choice = document.querySelectorAll('.btn');
+
+           // 문제 출력
+           question.innerHTML = '문제' + idx + ') ' + quiz.questions[quiz.questionIndex].text;
+
+           // 선택지 출력
+           for (var i = 0; i < 2; i++) {
+              choice[i].innerHTML = quiz.questions[quiz.questionIndex].choice[i];
+              choice[i].value = quiz.questions[quiz.questionIndex].answer[i];
+           }
+
+           progress();
+        }
+
+        function progress() {
+           var progress = document.getElementById('progress');
+           progress.innerHTML = '문제 ' + (quiz.questionIndex + 1) + '/ ' + quiz.questions.length;
+        }
+
+        var btn = document.querySelectorAll('.btn');
+
+        // 입력 및 정답 확인 함수
+        function checkAnswer(i) {
+           btn[i].addEventListener('click', function() {
+              var answer = btn[i].value;
+
+              if (answer == "A") {
+                 quiz.typeA++;
+              } else if(answer == "B") {
+                 quiz.typeB++;
+              }
+
+              if (quiz.questionIndex < quiz.questions.length - 1) {
+                 quiz.questionIndex++;
+                 updateQuiz();
+              } else {
+                 result();
+              }
+           });
+        }
+
+    function result() {
+       var quizDiv = document.getElementById('quiz');
+       var calcType = Math.max(quiz.typeA, quiz.typeB);
+       var type = "";
+
+       if(quiz.typeA == calcType) {
+           location.href="test5_a1.html";
+       }
+       if(quiz.typeB == calcType) {
+           location.href="test5_a2.html";
+       }
+
+
+       // var txt = '<h3>결과</h3>' + '<h2 id="score">당신은 ' + type + ' 사람이군요!</h2>';
+
+       quizDiv.innerHTML = txt;
+
+
+    }
+
+    for (var i = 0; i < btn.length; i++) {
+       checkAnswer(i);
+    }
+
+    updateQuiz();
+
+
+    </script>
+</html>
